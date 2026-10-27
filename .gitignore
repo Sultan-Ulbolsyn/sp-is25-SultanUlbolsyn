@@ -1,0 +1,10 @@
+srs-multitasking/task1/procinfo
+srs-multitasking/task1/topmem
+srs-multitasking/task2/minishell
+srs-multitasking/task3/race
+srs-multitasking/task3/race_fixed
+srs-multitasking/task3/philosophers
+srs-multitasking/task3/deadlock
+srs-multitasking/task4/affinity
+core
+core.*

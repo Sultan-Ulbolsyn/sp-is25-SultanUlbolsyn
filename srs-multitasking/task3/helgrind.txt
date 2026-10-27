@@ -1,0 +1,67 @@
+==7108== Helgrind, a thread error detector
+==7108== Copyright (C) 2007-2024, and GNU GPL'd, by OpenWorks LLP et al.
+==7108== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==7108== Command: ./race
+==7108== Parent PID: 3935
+==7108== 
+==7108== ---Thread-Announcement------------------------------------------
+==7108== 
+==7108== Thread #3 was created
+==7108==    at 0x49B83C3: clone (clone.S:76)
+==7108==    by 0x49B853E: __clone_internal_fallback (clone-internal.c:64)
+==7108==    by 0x49B853E: __clone_internal (clone-internal.c:109)
+==7108==    by 0x4924904: create_thread (pthread_create.c:298)
+==7108==    by 0x492562D: pthread_create@@GLIBC_2.34 (pthread_create.c:863)
+==7108==    by 0x4860743: pthread_create_WRK (hg_intercepts.c:449)
+==7108==    by 0x4001299: main (in /home/ulbolsyn/SOZH1/TASK3/race)
+==7108== 
+==7108== ---Thread-Announcement------------------------------------------
+==7108== 
+==7108== Thread #2 was created
+==7108==    at 0x49B83C3: clone (clone.S:76)
+==7108==    by 0x49B853E: __clone_internal_fallback (clone-internal.c:64)
+==7108==    by 0x49B853E: __clone_internal (clone-internal.c:109)
+==7108==    by 0x4924904: create_thread (pthread_create.c:298)
+==7108==    by 0x492562D: pthread_create@@GLIBC_2.34 (pthread_create.c:863)
+==7108==    by 0x4860743: pthread_create_WRK (hg_intercepts.c:449)
+==7108==    by 0x4001299: main (in /home/ulbolsyn/SOZH1/TASK3/race)
+==7108== 
+==7108== ----------------------------------------------------------------
+==7108== 
+==7108== Possible data race during read of size 8 at 0x4004030 by thread #3
+==7108== Locks held: none
+==7108==    at 0x40011FE: worker (in /home/ulbolsyn/SOZH1/TASK3/race)
+==7108==    by 0x486094A: mythread_wrapper (hg_intercepts.c:410)
+==7108==    by 0x4924DF9: start_thread (pthread_create.c:454)
+==7108==    by 0x49B83D3: clone (clone.S:100)
+==7108== 
+==7108== This conflicts with a previous write of size 8 by thread #2
+==7108== Locks held: none
+==7108==    at 0x4001209: worker (in /home/ulbolsyn/SOZH1/TASK3/race)
+==7108==    by 0x486094A: mythread_wrapper (hg_intercepts.c:410)
+==7108==    by 0x4924DF9: start_thread (pthread_create.c:454)
+==7108==    by 0x49B83D3: clone (clone.S:100)
+==7108==  Address 0x4004030 is 0 bytes inside data symbol "counter"
+==7108== 
+==7108== ----------------------------------------------------------------
+==7108== 
+==7108== Possible data race during write of size 8 at 0x4004030 by thread #3
+==7108== Locks held: none
+==7108==    at 0x4001209: worker (in /home/ulbolsyn/SOZH1/TASK3/race)
+==7108==    by 0x486094A: mythread_wrapper (hg_intercepts.c:410)
+==7108==    by 0x4924DF9: start_thread (pthread_create.c:454)
+==7108==    by 0x49B83D3: clone (clone.S:100)
+==7108== 
+==7108== This conflicts with a previous write of size 8 by thread #2
+==7108== Locks held: none
+==7108==    at 0x4001209: worker (in /home/ulbolsyn/SOZH1/TASK3/race)
+==7108==    by 0x486094A: mythread_wrapper (hg_intercepts.c:410)
+==7108==    by 0x4924DF9: start_thread (pthread_create.c:454)
+==7108==    by 0x49B83D3: clone (clone.S:100)
+==7108==  Address 0x4004030 is 0 bytes inside data symbol "counter"
+==7108== 
+==7108== 
+==7108== Use --history-level=approx or =none to gain increased speed, at
+==7108== the cost of reduced accuracy of conflicting-access information
+==7108== For lists of detected and suppressed errors, rerun with: -s
+==7108== ERROR SUMMARY: 92 errors from 2 contexts (suppressed: 26 from 3)
